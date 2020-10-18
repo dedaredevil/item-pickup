@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8324779805034760105}
   - component: {fileID: 8324779805034760110}
   - component: {fileID: 8324779805034760111}
+  - component: {fileID: 5947252586580736486}
   m_Layer: 0
   m_Name: Player Camera
   m_TagString: MainCamera
@@ -83,6 +84,19 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8324779805034760108}
   m_Enabled: 1
+--- !u!114 &5947252586580736486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8324779805034760108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdd00dfe74309e44788cf97ddca751a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSense: 300
 --- !u!1 &8324779805875946318
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,6 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8324779805875946312}
   - component: {fileID: 8324779805875946313}
+  - component: {fileID: 1241104307073241629}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -133,3 +148,17 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1241104307073241629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8324779805875946318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d1b457354b98e64c8cda8641881d38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterController: {fileID: 8324779805875946313}
+  movementSpeed: 5
