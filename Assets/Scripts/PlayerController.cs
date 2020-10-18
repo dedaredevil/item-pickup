@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] CharacterController characterController;
+    [SerializeField] CharacterController characterController = null;
     [SerializeField] float movementSpeed = 5f;
 
     // Update is called once per frame
