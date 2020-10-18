@@ -8,23 +8,41 @@ public class Pickup : MonoBehaviour
     [SerializeField] Camera firstPersonCamera = null;
     [SerializeField] float range = 2f;
     [SerializeField] Vector3 rayOffset = new Vector3(0,0,0.3f);
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] Transform destination;
+    private RaycastHit hitInfo;
+    private bool canGrab;
 
     // Update is called once per frame
     void Update()
     {
-       if (Input.GetButtonDown("Fire1"))
+        Grab();
+
+        if (Input.GetButtonDown("Fire1"))
         {
-            RaycastHit hitInfo;
-            if (Physics.Raycast(firstPersonCamera.transform.position + rayOffset, firstPersonCamera.transform.forward, out hitInfo, range))
+            if (canGrab && hitInfo.transform != null)
             {
-                Debug.Log("Object name: " + hitInfo.transform.name + "Object tag: " + hitInfo.transform.tag); 
+                Debug.Log("Set down object");
+                hitInfo.transform.GetComponent<Rigidbody>().useGravity = true;
+                hitInfo.transform.GetComponent<Rigidbody>().isKinematic = false;
+                hitInfo.transform.GetComponent<BoxCollider>().isTrigger = false;
+            }
+            if (Physics.Raycast(firstPersonCamera.transform.position + rayOffset, firstPersonCamera.transform.forward, out hitInfo, range) && hitInfo.transform.tag == "Moveable")
+            {
+                    Debug.Log("The object name hit is: " + hitInfo.transform.name + " The tag is: " + hitInfo.transform.tag);
+                    hitInfo.transform.GetComponent<Rigidbody>().useGravity = false;
+                    hitInfo.transform.GetComponent<Rigidbody>().isKinematic = true;
+                    hitInfo.transform.GetComponent<BoxCollider>().isTrigger = true;
+                    canGrab = !canGrab;                                
             }
         }
+    }
+
+    void Grab()
+    {
+        if (canGrab && hitInfo.transform != null)
+        {
+            hitInfo.transform.position = destination.transform.position;
+            hitInfo.transform.rotation = destination.transform.rotation;
+        } 
     }
 }
