@@ -9,7 +9,9 @@ public class Pickup : MonoBehaviour
     [SerializeField] float grabRange = 2f;
     [SerializeField] Transform destination = null;
     private RaycastHit hitInfo;
-    private bool canGrab;
+
+    // Get component for animation
+    [SerializeField] Animator myAnimatorController = null;
 
     // Start and end markers for journey 
     private Vector3 endPosition;
@@ -36,20 +38,20 @@ public class Pickup : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            if (canGrab && hitInfo.transform != null)
+            // Play reaching animation
+            myAnimatorController.Play("Reach");
+
+            if (hitInfo.transform != null)
             {
-                Debug.Log("Set down object");
                 hitInfo.transform.GetComponent<Rigidbody>().useGravity = true;
                 hitInfo.transform.GetComponent<Rigidbody>().isKinematic = false;
                 hitInfo.transform.GetComponent<BoxCollider>().isTrigger = false;
             }
             if (Physics.Raycast(firstPersonCamera.transform.position, firstPersonCamera.transform.forward, out hitInfo, grabRange) && hitInfo.transform.tag == "Moveable")
             {
-                Debug.Log("The object name hit is: " + hitInfo.transform.name + " The tag is: " + hitInfo.transform.tag);
                 hitInfo.transform.GetComponent<Rigidbody>().useGravity = false;
                 hitInfo.transform.GetComponent<Rigidbody>().isKinematic = true;
                 hitInfo.transform.GetComponent<BoxCollider>().isTrigger = true;
-                canGrab = !canGrab;
 
                 timeStartedLerping = Time.time;
                 startPosition = hitInfo.transform.position;
@@ -61,7 +63,7 @@ public class Pickup : MonoBehaviour
     // Allows for smooth movement to first-person hands
     void GoLerp()
     {
-        if (canGrab && hitInfo.transform != null)
+        if (hitInfo.transform != null)
         {
             hitInfo.transform.position = Lerp(startPosition, endPosition, timeStartedLerping, lerpTime);
         }
@@ -70,7 +72,7 @@ public class Pickup : MonoBehaviour
     // Snaps and rotates to hand
     void Grab()
     {
-        if (canGrab && hitInfo.transform != null)
+        if (hitInfo.transform != null)
         {
             hitInfo.transform.position = destination.transform.position;
             hitInfo.transform.rotation = destination.transform.rotation;
