@@ -271,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstPersonCamera: {fileID: 3913202809468726018}
   range: 2
-  rayOffset: {x: 0, y: 0, z: 0.3}
+  rayOffset: {x: 0, y: 0, z: 0}
   destination: {fileID: 3031105041365069822}
 --- !u!1001 &3913202808729761955
 PrefabInstance:

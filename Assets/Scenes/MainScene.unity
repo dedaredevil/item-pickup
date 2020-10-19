@@ -1437,6 +1437,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5910248525555565155, guid: f41e3eceff434fa44b10ce7486fa46d7,
+        type: 3}
+      propertyPath: lerpTime
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 9125798804049953504, guid: f41e3eceff434fa44b10ce7486fa46d7,
         type: 3}
       propertyPath: m_Enabled
