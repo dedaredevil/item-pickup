@@ -1,13 +1,8 @@
+![IMG_5741](https://user-images.githubusercontent.com/29796332/212352318-e01c46de-28dd-4f12-99f2-40cfb3165cb1.GIF)
+
 # Item Pickup
-This is an example, first-person project made in Unity that allows the player to pick up and drop items
+First-person template that allows players to pick up, carry, and drop in-game items
 
-## Status and prerequisites
-
-Current status at a glance:
 ```
 Unity version: 2019.4.12f1
 ```
-
-Here is a scene screenshot:
-
-![Project Capture](Documentation/Images/project-capture-01.PNG)
